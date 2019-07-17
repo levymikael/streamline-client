@@ -1,32 +1,19 @@
 import React, { Component } from "react";
-
+import axios from 'axios';
 export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      generalScore: ""
+      age : "",
+      gender : "",
+      destination : "",
+      duration : ""
     };
-    this.profile = this.profile.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-  profile() {
-    var generalScore = 0;
-
-    var age = document.getElementsByName("gender").value;
-
-    var gender = document.getElementsByName("age").value;
-
-    var destination = document.getElementsByName("destination-type").value;
-
-    var duration = document.getElementsByName("duration").value;
-
-    var generalScore = {
-      "age": age,
-      "gender": gender,
-      'destination': destination,
-      "duration": duration
-    };
-
-    return generalScore;
+  onSubmit() {
+    axios.get("https://api-football-v1.p.rapidapi.com/v2/fixtures/live", this.state).then((res) => console.log(res))
+    .catch((err) => console.log("fsadsfdafsda"))
   }
 
   state = "";
@@ -35,20 +22,22 @@ export default class Form extends Component {
       <div>
         <h1> Form </h1>{" "}
         <div class="section-title">
-          <h3> I am </h3> <input type="radio" name="gender" value="male" /> Male{" "}
-          <input type="radio" name="gender" value="female" /> Female{" "}
-          <input type="radio" name="age" value="0-18" /> 0 - 18{" "}
-          <input type="radio" name="age" value="18-30" /> 18 - 30{" "}
-          <input type="radio" name="age" value="30+" /> 30 +
+          <h3> I am </h3> <input onChange={(e) => this.setState({gender : e.target.value})} type="radio" name="gender" value="male" /> Male{" "}
+          <input  onChange={(e) => this.setState({gender : e.target.value})} type="radio" name="gender" value="female" /> Female{" "}
+          <input onChange={(e) => this.setState({age : e.target.value})} type="radio" name="age" value="0-18" /> 0 - 18{" "}
+          <input onChange={(e) => this.setState({age : e.target.value})} type="radio" name="age" value="18-30" /> 18 - 30{" "}
+          <input onChange={(e) => this.setState({age : e.target.value})} type="radio" name="age" value="30+" /> 30 +
           <h3> Where are you going ? </h3>{" "}
-          <input type="radio" name="destination-type" value="Work" />
-          Work <input type="radio" name="destination-type" value="Gym" />
-          Gym <input type="radio" name="destination-type" value="Out" />
+          <input onChange={(e) => this.setState({destination : e.target.value})} type="radio" name="destination-type" value="Work" />
+          Work <input onChange={(e) => this.setState({destination : e.target.value})}type="radio" name="destination-type" value="Gym" />
+          Gym <input onChange={(e) => this.setState({destination : e.target.value})} type="radio" name="destination-type" value="Out" />
           Partying{" "}
         </div>{" "}
         <div class="section-title">
           <h3> How long ? </h3>{" "}
-          <input type="range" name="duration" min="0" max="2" />{" "}
+          <input onChange={(e) => this.setState({duration : e.target.value})} type="range" name="duration" min="0" max="2" />
+          <button onClick={this.onSubmit}>Send</button>
+          {" "}
           {/* 0 - trip less than 30 mins
                             1 - 30 mins to 1hour
                             2 - 1 hour + */}{" "}
