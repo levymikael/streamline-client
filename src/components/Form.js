@@ -20,10 +20,10 @@ export default class Form extends Component {
     var duration = document.getElementsByName("duration").value;
 
     var generalScore = {
-      age: age,
-      gender: gender,
-      destination: destination,
-      duration: duration
+      "age": age,
+      "gender": gender,
+      'destination': destination,
+      "duration": duration
     };
 
     return generalScore;
