@@ -5,8 +5,14 @@ export default class Form extends Component {
     return (
       <div>
         <h1>Form</h1>
-
         <div class="section-title">
+            <h3>I am</h3>
+            <input type="radio" name="gender" value="male" />Male
+            <input type="radio" name="gender" value="female" />Female
+            <input type="radio" name="age" value="0-18" />0-18
+            <input type="radio" name="age" value="18-30" />18-30
+            <input type="radio" name="age" value="30+" />30+
+
           <h3>Where are you going ?</h3>
           <input type="radio" name="destination-type" value="Work" />
           Work

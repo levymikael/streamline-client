@@ -19,7 +19,7 @@ class App extends React.Component {
           :
           <Playlist></Playlist>
         }
-        <button onClick = {(e) => this.setState({form : !this.state.form})}>Switch</button>
+        <button id="button" onClick = {(e) => this.setState({form : !this.state.form})}>Switch</button>
       </div>
     );
   }
