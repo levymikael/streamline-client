@@ -1,0 +1,11 @@
+body{
+    background-image: url('http://sfwallpaper.com/images/cool-background-images-hd-29.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+.App{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
